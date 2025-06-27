@@ -1,6 +1,11 @@
 package com.jmg.tondeuse.adapter.in.rest.dto;
 
-import com.jmg.tondeuse.domain.model.Position;
+import com.jmg.tondeuse.domain.model.CardinalPointEnum;
+import com.jmg.tondeuse.domain.model.DirectionEnum;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +16,13 @@ import java.util.List;
 @Setter
 @Builder
 public class MowerRequest {
+    @NotBlank(message = "id can't by empty")
     private String id;
-    private Position start_position;
-    private String orientation;
-    private List<String> instructions;
+    @NotNull(message = "start_position can't by empty")
+    @Valid
+    private PositionJson start_position;
+    @NotNull(message = "orientation can't by empty")
+    private CardinalPointEnum orientation;
+    @NotEmpty(message = "instructions can't by empty")
+    private List<DirectionEnum> instructions;
 }

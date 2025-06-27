@@ -1,0 +1,4 @@
+{
+  "mowers[1].start_position.y": "y should be greater than or equal to 0",
+  "mowers[0].start_position.x": "x should be greater than or equal to 0"
+}

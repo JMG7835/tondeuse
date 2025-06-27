@@ -1,0 +1,47 @@
+{
+  "field": {
+    "max_x": 5,
+    "max_y": 5
+  },
+  "mowers": [
+    {
+      "id": "mower1",
+      "start_position": {
+        "x": -1,
+        "y": 2
+      },
+      "orientation": "N",
+      "instructions": [
+        "G",
+        "A",
+        "G",
+        "A",
+        "G",
+        "A",
+        "G",
+        "A",
+        "A"
+      ]
+    },
+    {
+      "id": "mower2",
+      "start_position": {
+        "x": 3,
+        "y": -3
+      },
+      "orientation": "E",
+      "instructions": [
+        "A",
+        "A",
+        "D",
+        "A",
+        "A",
+        "D",
+        "A",
+        "D",
+        "D",
+        "A"
+      ]
+    }
+  ]
+}
