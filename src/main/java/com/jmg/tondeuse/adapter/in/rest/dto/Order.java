@@ -12,12 +12,11 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class MowerOrder {
+public class Order {
     @NotNull(message = "field is required")
     @Valid
     private FieldJson field;
     @NotEmpty(message = "One mower is required")
-    @NotNull(message = "mowers is required")
     @Valid
     private List<MowerRequest> mowers;
 }
