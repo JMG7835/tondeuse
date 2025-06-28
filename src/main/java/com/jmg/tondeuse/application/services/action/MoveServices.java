@@ -39,11 +39,31 @@ public class MoveServices implements MoveUseCase {
     }
 
     private void front(Mower mower, Garden garden) {
+
+        int maxX = garden.getField()[0].length;
+        int maxY = garden.getField().length;
+        int x = mower.getPosition().getX();
+        int y = mower.getPosition().getY();
         switch (mower.getOrientation()) {
-            case E -> mower.setOrientation(CardinalPointEnum.N);
-            case N -> mower.setOrientation(CardinalPointEnum.W);
-            case S -> mower.setOrientation(CardinalPointEnum.E);
-            case W -> mower.setOrientation(CardinalPointEnum.S);
+            case E:
+                if (x < maxX) {
+                    mower.getPosition().setX(x + 1);
+                }
+                break;
+            case N :
+                if (y < maxY) {
+                    mower.getPosition().setY(y + 1);
+                }
+                break;
+            case S :
+                if (y > 0) {
+                    mower.getPosition().setY(x - 1);
+                }
+                break;
+            case W :
+                if (x > 0) {
+                    mower.getPosition().setX(x - 1);
+                }
         }
     }
 }

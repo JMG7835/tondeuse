@@ -42,7 +42,8 @@ public class MoveServicesTest {
         Mower mower = new Mower(NAME, POSITION00, CardinalPointEnum.N, new ArrayList<>());
         moveServices.move(DirectionEnum.A, mower, GARDEN);
         assertEquals(CardinalPointEnum.N, mower.getOrientation());
-        assertEquals(POSITION01, mower.getPosition());
+        assertEquals(POSITION01.getX(), mower.getPosition().getX());
+        assertEquals(POSITION01.getY(), mower.getPosition().getY());
     }
 
     @Test
@@ -50,6 +51,7 @@ public class MoveServicesTest {
         Mower mower = new Mower(NAME, POSITION01, CardinalPointEnum.N, new ArrayList<>());
         moveServices.move(DirectionEnum.A, mower, GARDEN);
         assertEquals(CardinalPointEnum.N, mower.getOrientation());
-        assertEquals(POSITION01, mower.getPosition());
+        assertEquals(POSITION01.getX(), mower.getPosition().getX());
+        assertEquals(POSITION01.getY(), mower.getPosition().getY());
     }
 }
