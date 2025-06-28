@@ -11,13 +11,12 @@ import org.springframework.stereotype.Service;
 public class MoveServices implements MoveUseCase {
 
     @Override
-    public Mower move(DirectionEnum direction, Mower mower, Garden garden) {
+    public void move(DirectionEnum direction, Mower mower, Garden garden) {
         switch (direction) {
             case A -> front(mower, garden);
             case D -> turnRight(mower);
             case G -> turnLeft(mower);
         }
-        return mower;
 
     }
 
