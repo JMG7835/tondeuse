@@ -1,3 +1,20 @@
 {
-  "mowers": []
+  "mowers": [
+    {
+      "id": "mower1",
+      "position": {
+        "x": 1,
+        "y": 3
+      },
+      "orientation": "N"
+    },
+    {
+      "id": "mower2",
+      "position": {
+        "x": 5,
+        "y": 1
+      },
+      "orientation": "E"
+    }
+  ]
 }

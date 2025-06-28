@@ -2,6 +2,7 @@ package com.jmg.tondeuse.adapter.in.rest.mapper;
 
 import com.jmg.tondeuse.adapter.in.rest.dto.MowerRequest;
 import com.jmg.tondeuse.adapter.in.rest.dto.MowerResponce;
+import com.jmg.tondeuse.adapter.in.rest.dto.MowerResult;
 import com.jmg.tondeuse.adapter.in.rest.dto.PositionJson;
 import com.jmg.tondeuse.domain.model.Mower;
 import com.jmg.tondeuse.domain.model.Position;
@@ -27,11 +28,11 @@ public class MowerMapper {
         return mowerRequests.stream().map(this::toMower).toList();
     }
 
-    public MowerResponce toRespoce(Mower mower){
+    public MowerResponce toResult(Mower mower){
         PositionJson position = positionMapper.toPositionJson(mower.getPosition());
         return MowerResponce.builder().id(mower.getId()).position(position).orientation(mower.getOrientation()).build();
     }
-    public List<MowerResponce> toRespoce(List<Mower> mower){
-        return mower.stream().map(this::toRespoce).toList();
+    public MowerResult toResult(List<Mower> mower){
+        return new MowerResult(mower.stream().map(this::toResult).toList());
     }
 }
