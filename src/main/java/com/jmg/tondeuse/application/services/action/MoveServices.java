@@ -57,7 +57,7 @@ public class MoveServices implements MoveUseCase {
                 break;
             case S :
                 if (y > 0) {
-                    mower.getPosition().setY(x - 1);
+                    mower.getPosition().setY(y - 1);
                 }
                 break;
             case W :

@@ -12,12 +12,10 @@ import java.util.List;
 public class Mow {
 
     private final MoveServices moveServices;
-    private final GardenServices gardenServices;
 
 
-    public Mow(MoveServices moveServices, GardenServices gardenServices) {
+    public Mow(MoveServices moveServices) {
         this.moveServices = moveServices;
-        this.gardenServices = gardenServices;
     }
 
     public List<Mower> start(Garden garden) {

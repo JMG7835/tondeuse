@@ -16,8 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class MoveServicesTest {
     static private String NAME = "test";
-    static private Position POSITION00 = new Position(0, 0);
-    static private Position POSITION01 = new Position(0, 1);
     static private Garden GARDEN = new Garden(new String[1][1], new ArrayList<>());
 
     @InjectMocks
@@ -25,33 +23,65 @@ public class MoveServicesTest {
 
     @Test
     void testMoveRight() {
-        Mower mower = new Mower(NAME, POSITION00, CardinalPointEnum.N, new ArrayList<>());
+        Mower mower = new Mower(NAME, new Position(0, 0), CardinalPointEnum.N, new ArrayList<>());
         moveServices.move(DirectionEnum.D, mower, GARDEN);
         assertEquals(CardinalPointEnum.E, mower.getOrientation());
     }
 
     @Test
     void testMoveLeft() {
-        Mower mower = new Mower(NAME, POSITION00, CardinalPointEnum.N, new ArrayList<>());
+        Mower mower = new Mower(NAME, new Position(0, 0), CardinalPointEnum.N, new ArrayList<>());
         moveServices.move(DirectionEnum.G, mower, GARDEN);
         assertEquals(CardinalPointEnum.W, mower.getOrientation());
     }
 
     @Test
-    void testMovefront() {
-        Mower mower = new Mower(NAME, POSITION00, CardinalPointEnum.N, new ArrayList<>());
+    void testMoveN() {
+        Position position = new Position(0, 1);
+        Mower mower = new Mower(NAME, new Position(0, 0), CardinalPointEnum.N, new ArrayList<>());
         moveServices.move(DirectionEnum.A, mower, GARDEN);
         assertEquals(CardinalPointEnum.N, mower.getOrientation());
-        assertEquals(POSITION01.getX(), mower.getPosition().getX());
-        assertEquals(POSITION01.getY(), mower.getPosition().getY());
+        assertEquals(position.getX(), mower.getPosition().getX());
+        assertEquals(position.getY(), mower.getPosition().getY());
     }
 
     @Test
     void testMovefrontBorder() {
-        Mower mower = new Mower(NAME, POSITION01, CardinalPointEnum.N, new ArrayList<>());
+        Position position = new Position(0, 1);
+        Mower mower = new Mower(NAME, position, CardinalPointEnum.N, new ArrayList<>());
         moveServices.move(DirectionEnum.A, mower, GARDEN);
         assertEquals(CardinalPointEnum.N, mower.getOrientation());
-        assertEquals(POSITION01.getX(), mower.getPosition().getX());
-        assertEquals(POSITION01.getY(), mower.getPosition().getY());
+        assertEquals(position.getX(), mower.getPosition().getX());
+        assertEquals(position.getY(), mower.getPosition().getY());
+    }
+
+    @Test
+    void testMoveE() {
+        Position position = new Position(1, 0);
+        Mower mower = new Mower(NAME, new Position(0, 0), CardinalPointEnum.E, new ArrayList<>());
+        moveServices.move(DirectionEnum.A, mower, GARDEN);
+        assertEquals(CardinalPointEnum.E, mower.getOrientation());
+        assertEquals(position.getX(), mower.getPosition().getX());
+        assertEquals(position.getY(), mower.getPosition().getY());
+    }
+
+    @Test
+    void testMoveS() {
+        Position position = new Position(1, 0);
+        Mower mower = new Mower(NAME, new Position(1, 1), CardinalPointEnum.S, new ArrayList<>());
+        moveServices.move(DirectionEnum.A, mower, GARDEN);
+        assertEquals(CardinalPointEnum.S, mower.getOrientation());
+        assertEquals(position.getX(), mower.getPosition().getX());
+        assertEquals(position.getY(), mower.getPosition().getY());
+    }
+
+    @Test
+    void testMoveW() {
+        Position position = new Position(0, 1);
+        Mower mower = new Mower(NAME, new Position(1, 1), CardinalPointEnum.W, new ArrayList<>());
+        moveServices.move(DirectionEnum.A, mower, GARDEN);
+        assertEquals(CardinalPointEnum.W, mower.getOrientation());
+        assertEquals(position.getX(), mower.getPosition().getX());
+        assertEquals(position.getY(), mower.getPosition().getY());
     }
 }
